@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+        <meta charset="utf-8" />
+        <title>Arduino et Raspberry</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">Arduino et Raspberry </a></h1>
+                <nav><ul>
+                    <li><a href="/pages/a-propos.html">A propos</a></li>
+                    <li><a href="/category/raspberry.html">raspberry</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="/commandes-essentielles-pour-raspbian.html">Commandes essentielles pour Raspbian</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2015-12-29T16:20:00+01:00">
+                Published: mar. 29 décembre 2015
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/dominique.html">Dominique</a>
+        </address>
+<p>In <a href="/category/raspberry.html">raspberry</a>.</p>
+<p>tags: <a href="/tag/installation.html">installation</a> <a href="/tag/maj.html">maj</a> </p>
+</footer><!-- /.post-info --><p>La plupart des informations sont extraites de plusieurs sites dont un est une référence en français : <a href="http://www.framboise314.com">Framboise314</a>.</p>
+<h1>Installation / Sauvegarde</h1>
+<p>Les cartes SD ont des durées de vie limitées selon le nombre de réécritures. L'installation est importante mais aussi surtout la sauvegarde de la carte sd.</p>
+<p>Les commandes qui seront vues dans cette partie sont faites à partir d'un GNU/Linux dans un terminal. Elles sont pour la plupart à taper en administrateur.</p>
+<h2>Ecriture d'une image sur la carte sd</h2>
+<p><code>sudo dd if=raspbian.img of=/dev/sdb bs=4M</code></p>
+<p>Cela peut être l'image de base récupéré sur le site officiel : <a href="http://www.raspberrypi.org">Fondation raspberry pi</a> ou l'image que nous avons sauvegardé (voir en dessous) sans avoir à passer par de longues configurations.</p>
+<h2>Sauvegarde de la carte SD</h2>
+<p><code>sudo dd if=/dev/sda | &gt; gzip ~/image.img.gz</code></p>
+<p>Sauvegarde et compression dans un fichier gz.<br />
+Pour le transférer sur une carte SD ensuite, il faudra décompresser ce fichier pour obtenir le fichier img.</p>
+<h1>Mise à jour de Raspbian</h1>
+<h2>Maj des programmes</h2>
+<p><code>sudo apt-get update</code><br />
+<code>sudo apt-get dist-upgrade</code></p>
+<h2>Maj du noyau</h2>
+<p><code>sudo rpi-update</code>  </p>
+<h1>Configuration</h1>
+<p>La configuration du Rpi est facilitée par l'utilitaire raspi-config lancé par :
+<code>sudo raspi-config</code></p>
+<p>Il s'agit d'étendre la partition pour utiliser toute la place, de changer le mot de passe et de changer la langue ainsi que le "timezone". </p>
+<h1>Personnalisation</h1>
+<h2>Modifier le nom du Rpi</h2>
+<p>Avec l'édition des fichiers /etc/hostname et /etc/hosts</p>
+<h2>Texte d'ouverture</h2>
+<p>A l'ouverture d'une connection ssh, le texte du fichier /etc/motd s'affiche. Il peut être édité pour avoir une autre ouverture.</p>
+<p><strong>Note : après avoir édité toutes ces choses et fait un redémarrage, une sauvegarde peut être faite.</strong></p>
+<h1>Notes de commandes</h1>
+<h2>Forcer le hdmi</h2>
+<p>Quand le hdmi n'est pas branché au démarrage, le signal vidéo bascule sur le vga. L'édition du fichier /boot/config.txt est nécessaire :</p>
+<p>hdmi_force_hotplug=1 et hdmi_drive=2 dans /boot/config/txt</p>
+<h2>Clé usb monté comme disque dur</h2>
+<p>Créer un répetoire avec <em>mkdir</em> et mount /dev/sda1 emplacement (habituellement sda1 sinon df -h pour connaître)</p>
+<p>L'édition du fstab permet de fixer la configuration et de considérer la clé comme un disque dur (monté au démarrage) :</p>
+<p>/dev/sda1    /home/pi/documents     ext4       defaults     0    3</p>
+<p>Le 3 définit l'ordre pour fsck (analyser la partition)</p>                </article>
+            </aside><!-- /#featured -->
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>blogroll</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>
