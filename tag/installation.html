@@ -22,7 +22,47 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="/installation-de-lide-arduino.html">Installation de l'IDE Arduino</a></h1>
+                    <h1 class="entry-title"><a href="/mise-en-place-dun-serveur-git.html">Mise en place d'un serveur git</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2016-01-01T12:20:00+01:00">
+                Published: ven. 01 janvier 2016
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/dominique.html">Dominique</a>
+        </address>
+<p>In <a href="/category/raspberry.html">Raspberry</a>.</p>
+<p>tags: <a href="/tag/installation.html">installation</a> <a href="/tag/git.html">git</a> </p>
+</footer><!-- /.post-info --><h1>Informations</h1>
+<p>Nous allons aller à l'essentiel. Il faut supposer que le Rpi est relié au réseau par une adresse IP fixe.</p>
+<p>Le mieux serait de créer un utilisateur dédié. Nous allons juste mettre en place les dépôts vides ainsi que les clé publiques ssh.</p>
+<h1>Sur le Raspberry</h1>
+<h2>Créer le dépôt</h2>
+<p>Tout d'abord, il nous faut créer le répertoire où mettre le projet : commande mkdir ; puis aller dans le répertoire créé avec la commande cd.
+Et enfin initialiser le dépôt avec la commande <code>git --bare init</code>. Attention, la commande contient aussi --bare qui crée un dépôt sans répertoire de travail contrairement au dépôt sur nos PC.</p>
+<h2>Autoriser les utilisateurs à se connecter au serveur</h2>
+<p>Pour cela, nous allons le fichier authorized_keys dans le dossier <em>.ssh</em>. Habituellement, ce dossier n'est pas créé. Nous allons donc créer le dossier avec <code>mkdir .ssh</code> et le fichier avec <code>nano nomdufichier</code>.</p>
+<p>Dans ce fichier, la clé publique ssh de chaque utilisateur sera copié.<br />
+Sur le PC de chaque utilisateur, la clé publique se trouve dans le fichier <em>id_rsa.pub</em> dans le dossier <em>.ssh</em>. Copier le contenu de ce fichier dans le fichier <em>authorized_keys</em> sur le Rpi.</p>
+<h2>Sur le PC de l'utilisateur</h2>
+<p>Dans le dossier du dépôt git, il nous faut ajouter ce nouveau dépôt distant sur notre serveur perso avec la commande :
+<code>git remote add perso pi@adresseip:/home/pi/git/depotprojet</code></p>
+<p>Puis avec la commande <code>git push perso master</code> ou autre branche pour pousser les modifications et <code>git pull perso master</code> pour récupérer les modifications.</p>
+<h1>Notes</h1>
+<p>Il nous faudra revenir plus en détail plus tard sur une installation propre de Raspbian pour permettre une sécurité accrue.</p>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/installation-de-lide-arduino.html" rel="bookmark"
+                           title="Permalink to Installation de l'IDE Arduino">Installation de l'IDE Arduino</a></h1>
+                </header>
+
+                <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2015-12-30T10:20:00+01:00">
                 Published: mer. 30 décembre 2015
@@ -33,29 +73,10 @@
         </address>
 <p>In <a href="/category/arduino.html">Arduino</a>.</p>
 <p>tags: <a href="/tag/installation.html">installation</a> </p>
-</footer><!-- /.post-info --><h1>Informations</h1>
-<p>L'IDE (logiciel pour le code) ainsi que les schémas de la carte sont sous licence libre. Le nom Arduino a été déposé et a entraîné un réglement au tribunal. Nous n'allons pas nous étendre mais il existe de ce fait maintenant deux branches : <a href="https://www.arduino.cc">Arduino.cc</a> et <a href="https://www.arduino.org">Arduino.org</a> . De ce fait, il existe plusieurs cartes mais aussi logiciels pour le code.
-Nous nous concentrerons uniquement sur la branche <em>Arduino.cc</em> qui est la branche originelle dont le nom en France est Genuino (au lieu d'Arduino pour ces problèmes de nom déposé).</p>
-<h1>La carte phare</h1>
-<p>Il s'agit du modèle Uno, modèle idéal pour commencer à bidouiller.</p>
-<h1>Que faire ?</h1>
-<p>Réponse courte, presque tout. Détecter, commander des moteurs, allumer des DEL...</p>
-<h1>Installation</h1>
-<p>Pour pouvoir télécharger l'IDE, rendez vous sur <a href="https://www.arduino.cc/en/Main/Software">Arduino.cc</a>. Télécharger la version correspondante à votre distribution.</p>
-<h2>Windows</h2>
-<p>Pour plus de facilité, télécharger la version \emph{installer}. Cette version contient les drivers nécessaires au dialogue entre la carte Arduino et le PC. A la fin de l'installation, vous aurez l'entrée dans le menu ainsi qu'un raccourci sur le bureau.</p>
-<h2>Mac Os X</h2>
-<p>Télécharger la version correspondante. Une fois décompressée, l'archive libère l'application Arduino que vous pouvez installer où vous voulez.</p>
-<h2>GNU/Linux</h2>
-<p>La plupart du temps, les distributions possèdent un dépôt de logiciels. Bien qu'Arduino soit présent, c'est une version ancienne est disponible. Pour obtenir la dernière version, télécharger la version 32 ou 64 bits correspondant à votre système. 
-Avant de décompresser l'archive, l'IDE Arduino dépend de plusieurs paquets : gcc-avr, avr-libc, openjdk-8jdk. La décompression de l'archive fait apparaître un dossier nommé <em>arduino-1.6.6</em> (selon la version de l'IDE). 
-L'utilisateur doit être dans le groupe <em>tty</em> et <em>dialout</em>. Pour rendre ce changement effectif, il suffit de se reconnecter. Dans un terminal, il suffit de se placer dans ce dossier et de lancer <em>./arduino</em></p>
-<p>Si d'aventure, l'installation n'est pas possible, le mieux est de consulter les sites relevant de votre distribution ou de chercher sur un moteur de recherche l'erreur.</p>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
+</footer><!-- /.post-info -->                <p>Installer l'IDE Arduino</p>
+                <a class="readmore" href="/installation-de-lide-arduino.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
 
             <li><article class="hentry">
                 <header>
