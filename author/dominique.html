@@ -16,13 +16,57 @@
                 <nav><ul>
                     <li><a href="/pages/a-propos.html">A propos</a></li>
                     <li><a href="/category/arduino.html">Arduino</a></li>
+                    <li><a href="/category/gnulinux.html">GNU/Linux</a></li>
                     <li><a href="/category/raspberry.html">Raspberry</a></li>
                 </ul></nav>
         </header><!-- /#banner -->
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="/mise-en-place-dun-serveur-git.html">Mise en place d'un serveur git</a></h1>
+                    <h1 class="entry-title"><a href="/chiffrage-des-fichiers-nomades.html">Chiffrage des fichiers nomades</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2016-01-27T16:20:00+01:00">
+                Published: mer. 27 janvier 2016
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/dominique.html">Dominique</a>
+        </address>
+<p>In <a href="/category/gnulinux.html">GNU/Linux</a>.</p>
+<p>tags: <a href="/tag/usb.html">usb</a> <a href="/tag/chiffrage.html">chiffrage</a> </p>
+</footer><!-- /.post-info --><h1>Pourquoi ?</h1>
+<p>Une clé usb se balade avec nous dans nos trajets. Avec la progression de la technologie, elles sont de plus en plus petites et donc sont facilement perdues ou volées. La protection des données est importante selon le type de fichiers qu'il y a dessus : un CV, des dossiers professionnels que personne ne veut à la portée des autres.
+Il est donc nécessaire de protéger ces données, nous allons voir comment.</p>
+<h1>LUKS avec cryptsetup</h1>
+<p>GNU/Linux possède au niveau de son noyau une solution LUKS pour chiffrer et déchiffrer les dossiers. Créer la partition nécessite de manipuler la ligne de commande, mais l'utiliser sera sur un gestionnaire de fenêtres conventionnel sera facile (kde, gnome, xfce, ...).</p>
+<p>La clé usb est d'abord à sauvegarder, la création du volume chiffré va formater la clé. Notez quel est le numéro de la partition de la clé (/dev/sda3) et démontez-la. </p>
+<p>Ensuite, formatez la en la chiffrant :</p>
+<div class="highlight"><pre>sudo cryptsetup luksFormat -c aes-xts-plain64 -s 512 -h sha512 /dev/sdaXX
+</pre></div>
+
+
+<p>ou la commande sans sudo sous root. Remplacez XX par le numéro correspondant. Un mot de passe vous sera demandé, il s'agit du mot de passe qui sera demandé à chaque ouverture de la clé usb.</p>
+<p>Puis, il nous faut créer un système de fichiers par exemple. Montons la partition chiffrée avant, formatons la en ext3 puis fermons la partition cryptée :</p>
+<div class="highlight"><pre>sudo cryptsetup luksOpen /dev/sdaXX home
+sudo mkfs.ext3 /dev/mapper/home
+sudo cryptsetup luksClose home
+</pre></div>
+
+
+<p>Enlevez puis remettez la clé usb dans le port. Ouvrez la partition chiffré et une invite vous demandera le mot de passe.</p>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/mise-en-place-dun-serveur-git.html" rel="bookmark"
+                           title="Permalink to Mise en place d'un serveur git">Mise en place d'un serveur git</a></h1>
+                </header>
+
+                <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2016-01-01T12:20:00+01:00">
                 Published: ven. 01 janvier 2016
@@ -33,28 +77,10 @@
         </address>
 <p>In <a href="/category/raspberry.html">Raspberry</a>.</p>
 <p>tags: <a href="/tag/installation.html">installation</a> <a href="/tag/git.html">git</a> </p>
-</footer><!-- /.post-info --><h1>Informations</h1>
-<p>Nous allons aller à l'essentiel. Il faut supposer que le Rpi est relié au réseau par une adresse IP fixe.</p>
-<p>Le mieux serait de créer un utilisateur dédié. Nous allons juste mettre en place les dépôts vides ainsi que les clé publiques ssh.</p>
-<h1>Sur le Raspberry</h1>
-<h2>Créer le dépôt</h2>
-<p>Tout d'abord, il nous faut créer le répertoire où mettre le projet : commande mkdir ; puis aller dans le répertoire créé avec la commande cd.
-Et enfin initialiser le dépôt avec la commande <code>git --bare init</code>. Attention, la commande contient aussi --bare qui crée un dépôt sans répertoire de travail contrairement au dépôt sur nos PC.</p>
-<h2>Autoriser les utilisateurs à se connecter au serveur</h2>
-<p>Pour cela, nous allons le fichier authorized_keys dans le dossier <em>.ssh</em>. Habituellement, ce dossier n'est pas créé. Nous allons donc créer le dossier avec <code>mkdir .ssh</code> et le fichier avec <code>nano nomdufichier</code>.</p>
-<p>Dans ce fichier, la clé publique ssh de chaque utilisateur sera copié.<br />
-Sur le PC de chaque utilisateur, la clé publique se trouve dans le fichier <em>id_rsa.pub</em> dans le dossier <em>.ssh</em>. Copier le contenu de ce fichier dans le fichier <em>authorized_keys</em> sur le Rpi.</p>
-<h2>Sur le PC de l'utilisateur</h2>
-<p>Dans le dossier du dépôt git, il nous faut ajouter ce nouveau dépôt distant sur notre serveur perso avec la commande :
-<code>git remote add perso pi@adresseip:/home/pi/git/depotprojet</code></p>
-<p>Puis avec la commande <code>git push perso master</code> ou autre branche pour pousser les modifications et <code>git pull perso master</code> pour récupérer les modifications.</p>
-<h1>Notes</h1>
-<p>Il nous faudra revenir plus en détail plus tard sur une installation propre de Raspbian pour permettre une sécurité accrue.</p>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
+</footer><!-- /.post-info -->                <p>Mettre en place un serveur git perso sur un Rpi</p>
+                <a class="readmore" href="/mise-en-place-dun-serveur-git.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
 
             <li><article class="hentry">
                 <header>
