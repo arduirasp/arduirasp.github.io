@@ -23,7 +23,64 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="/chiffrage-des-fichiers-nomades.html">Chiffrage des fichiers nomades</a></h1>
+                    <h1 class="entry-title"><a href="/b-a-ba-de-git.html">B-A BA de git</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2016-02-14T15:20:00+01:00">
+                Published: dim. 14 février 2016
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/dominique.html">Dominique</a>
+        </address>
+<p>In <a href="/category/gnulinux.html">GNU/Linux</a>.</p>
+<p>tags: <a href="/tag/git.html">git</a> </p>
+</footer><!-- /.post-info --><h1>Qu'est-ce ?</h1>
+<p>Git est un système de versionning. Il s'agit donc de garder en mémoire toutes les versions d'un fichier avec donc toutes les modifications. Pour plus d'informations, voir la <a href="https://fr.wikipedia.org/wiki/Git">page git sur wikipédia</a>.</p>
+<p>Avec ce système, il est facile et simplement de revenir sur une modification ; par exemple, dans un texte si on change un paragraphe mais qu'ensuite, la modification n'est pas correcte, le retour en arrière est facilité.</p>
+<p>Nous allons voir dans ces lignes comment utiliser un dépôt sur notre ordinateur en utilisant la ligne de commande, plus facile et rapidement.</p>
+<h1>Installation</h1>
+<p>installer git en utilisant le gestionnaire de paquets, par exemple sous un système deb :</p>
+<div class="highlight"><pre>sudo apt-get install git
+</pre></div>
+
+
+<p>Paramétrer nom et mail avec la commande </p>
+<div class="highlight"><pre>git config --global user.name &quot;nom&quot;
+git config --global user.email mail@mail.com
+</pre></div>
+
+
+<h1>Constuire le dépôt</h1>
+<p>Créer le dépôt dans le répertoire choisi (il ne doit pas être nécessairement vide) :</p>
+<div class="highlight"><pre>git init
+</pre></div>
+
+
+<h1>Le premier commit</h1>
+<p>Un fichier readme.md est créé. Nous allons donc créer un premier commit en ajoutant le fichier dans le suivi git et en le prenant en compte dans le suivi avec une description</p>
+<p>Ajouter le fichier</p>
+<div class="highlight"><pre>git add readme.md
+ou
+git add *
+</pre></div>
+
+
+<p>Prendre en compte le changement (ajout du fichier) dans le versionning</p>
+<div class="highlight"><pre>git commit -m &quot;nom du commit&quot;
+</pre></div>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/chiffrage-des-fichiers-nomades.html" rel="bookmark"
+                           title="Permalink to Chiffrage des fichiers nomades">Chiffrage des fichiers nomades</a></h1>
+                </header>
+
+                <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2016-01-27T16:20:00+01:00">
                 Published: mer. 27 janvier 2016
@@ -34,31 +91,10 @@
         </address>
 <p>In <a href="/category/gnulinux.html">GNU/Linux</a>.</p>
 <p>tags: <a href="/tag/usb.html">usb</a> <a href="/tag/chiffrage.html">chiffrage</a> </p>
-</footer><!-- /.post-info --><h1>Pourquoi ?</h1>
-<p>Une clé usb se balade avec nous dans nos trajets. Avec la progression de la technologie, elles sont de plus en plus petites et donc sont facilement perdues ou volées. La protection des données est importante selon le type de fichiers qu'il y a dessus : un CV, des dossiers professionnels que personne ne veut à la portée des autres.
-Il est donc nécessaire de protéger ces données, nous allons voir comment.</p>
-<h1>LUKS avec cryptsetup</h1>
-<p>GNU/Linux possède au niveau de son noyau une solution LUKS pour chiffrer et déchiffrer les dossiers. Créer la partition nécessite de manipuler la ligne de commande, mais l'utiliser sera sur un gestionnaire de fenêtres conventionnel sera facile (kde, gnome, xfce, ...).</p>
-<p>La clé usb est d'abord à sauvegarder, la création du volume chiffré va formater la clé. Notez quel est le numéro de la partition de la clé (/dev/sda3) et démontez-la. </p>
-<p>Ensuite, formatez la en la chiffrant :</p>
-<div class="highlight"><pre>sudo cryptsetup luksFormat -c aes-xts-plain64 -s 512 -h sha512 /dev/sdaXX
-</pre></div>
-
-
-<p>ou la commande sans sudo sous root. Remplacez XX par le numéro correspondant. Un mot de passe vous sera demandé, il s'agit du mot de passe qui sera demandé à chaque ouverture de la clé usb.</p>
-<p>Puis, il nous faut créer un système de fichiers par exemple. Montons la partition chiffrée avant, formatons la en ext3 puis fermons la partition cryptée :</p>
-<div class="highlight"><pre>sudo cryptsetup luksOpen /dev/sdaXX home
-sudo mkfs.ext3 /dev/mapper/home
-sudo cryptsetup luksClose home
-</pre></div>
-
-
-<p>Enlevez puis remettez la clé usb dans le port. Ouvrez la partition chiffré et une invite vous demandera le mot de passe.</p>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
+</footer><!-- /.post-info -->                <p>Comment protéger les données sur une clé usb ?</p>
+                <a class="readmore" href="/chiffrage-des-fichiers-nomades.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
 
             <li><article class="hentry">
                 <header>

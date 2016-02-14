@@ -23,7 +23,64 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="/mise-en-place-dun-serveur-git.html">Mise en place d'un serveur git</a></h1>
+                    <h1 class="entry-title"><a href="/b-a-ba-de-git.html">B-A BA de git</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2016-02-14T15:20:00+01:00">
+                Published: dim. 14 février 2016
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/dominique.html">Dominique</a>
+        </address>
+<p>In <a href="/category/gnulinux.html">GNU/Linux</a>.</p>
+<p>tags: <a href="/tag/git.html">git</a> </p>
+</footer><!-- /.post-info --><h1>Qu'est-ce ?</h1>
+<p>Git est un système de versionning. Il s'agit donc de garder en mémoire toutes les versions d'un fichier avec donc toutes les modifications. Pour plus d'informations, voir la <a href="https://fr.wikipedia.org/wiki/Git">page git sur wikipédia</a>.</p>
+<p>Avec ce système, il est facile et simplement de revenir sur une modification ; par exemple, dans un texte si on change un paragraphe mais qu'ensuite, la modification n'est pas correcte, le retour en arrière est facilité.</p>
+<p>Nous allons voir dans ces lignes comment utiliser un dépôt sur notre ordinateur en utilisant la ligne de commande, plus facile et rapidement.</p>
+<h1>Installation</h1>
+<p>installer git en utilisant le gestionnaire de paquets, par exemple sous un système deb :</p>
+<div class="highlight"><pre>sudo apt-get install git
+</pre></div>
+
+
+<p>Paramétrer nom et mail avec la commande </p>
+<div class="highlight"><pre>git config --global user.name &quot;nom&quot;
+git config --global user.email mail@mail.com
+</pre></div>
+
+
+<h1>Constuire le dépôt</h1>
+<p>Créer le dépôt dans le répertoire choisi (il ne doit pas être nécessairement vide) :</p>
+<div class="highlight"><pre>git init
+</pre></div>
+
+
+<h1>Le premier commit</h1>
+<p>Un fichier readme.md est créé. Nous allons donc créer un premier commit en ajoutant le fichier dans le suivi git et en le prenant en compte dans le suivi avec une description</p>
+<p>Ajouter le fichier</p>
+<div class="highlight"><pre>git add readme.md
+ou
+git add *
+</pre></div>
+
+
+<p>Prendre en compte le changement (ajout du fichier) dans le versionning</p>
+<div class="highlight"><pre>git commit -m &quot;nom du commit&quot;
+</pre></div>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/mise-en-place-dun-serveur-git.html" rel="bookmark"
+                           title="Permalink to Mise en place d'un serveur git">Mise en place d'un serveur git</a></h1>
+                </header>
+
+                <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2016-01-01T12:20:00+01:00">
                 Published: ven. 01 janvier 2016
@@ -34,24 +91,12 @@
         </address>
 <p>In <a href="/category/raspberry.html">Raspberry</a>.</p>
 <p>tags: <a href="/tag/installation.html">installation</a> <a href="/tag/git.html">git</a> </p>
-</footer><!-- /.post-info --><h1>Informations</h1>
-<p>Nous allons aller à l'essentiel. Il faut supposer que le Rpi est relié au réseau par une adresse IP fixe.</p>
-<p>Le mieux serait de créer un utilisateur dédié. Nous allons juste mettre en place les dépôts vides ainsi que les clé publiques ssh.</p>
-<h1>Sur le Raspberry</h1>
-<h2>Créer le dépôt</h2>
-<p>Tout d'abord, il nous faut créer le répertoire où mettre le projet : commande mkdir ; puis aller dans le répertoire créé avec la commande cd.
-Et enfin initialiser le dépôt avec la commande <code>git --bare init</code>. Attention, la commande contient aussi --bare qui crée un dépôt sans répertoire de travail contrairement au dépôt sur nos PC.</p>
-<h2>Autoriser les utilisateurs à se connecter au serveur</h2>
-<p>Pour cela, nous allons le fichier authorized_keys dans le dossier <em>.ssh</em>. Habituellement, ce dossier n'est pas créé. Nous allons donc créer le dossier avec <code>mkdir .ssh</code> et le fichier avec <code>nano nomdufichier</code>.</p>
-<p>Dans ce fichier, la clé publique ssh de chaque utilisateur sera copié.<br />
-Sur le PC de chaque utilisateur, la clé publique se trouve dans le fichier <em>id_rsa.pub</em> dans le dossier <em>.ssh</em>. Copier le contenu de ce fichier dans le fichier <em>authorized_keys</em> sur le Rpi.</p>
-<h2>Sur le PC de l'utilisateur</h2>
-<p>Dans le dossier du dépôt git, il nous faut ajouter ce nouveau dépôt distant sur notre serveur perso avec la commande :
-<code>git remote add perso pi@adresseip:/home/pi/git/depotprojet</code></p>
-<p>Puis avec la commande <code>git push perso master</code> ou autre branche pour pousser les modifications et <code>git pull perso master</code> pour récupérer les modifications.</p>
-<h1>Notes</h1>
-<p>Il nous faudra revenir plus en détail plus tard sur une installation propre de Raspbian pour permettre une sécurité accrue.</p>                </article>
-            </aside><!-- /#featured -->
+</footer><!-- /.post-info -->                <p>Mettre en place un serveur git perso sur un Rpi</p>
+                <a class="readmore" href="/mise-en-place-dun-serveur-git.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+                </ol><!-- /#posts-list -->
+                </section><!-- /#content -->
         <section id="extras" class="body">
                 <div class="blogroll">
                         <h2>blogroll</h2>
