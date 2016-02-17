@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+        <meta charset="utf-8" />
+        <title>Git : les différentes branches</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">Arduino et Raspberry </a></h1>
+                <nav><ul>
+                    <li><a href="/pages/a-propos.html">A propos</a></li>
+                    <li><a href="/category/arduino.html">Arduino</a></li>
+                    <li class="active"><a href="/category/gnulinux.html">GNU/Linux</a></li>
+                    <li><a href="/category/raspberry.html">Raspberry</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/drafts/git-les-differentes-branches.html" rel="bookmark"
+           title="Permalink to Git : les différentes branches">Git : les différentes branches</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2016-02-17T16:20:00+01:00">
+                Published: mer. 17 février 2016
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/dominique.html">Dominique</a>
+        </address>
+<p>In <a href="/category/gnulinux.html">GNU/Linux</a>.</p>
+<p>tags: <a href="/tag/git.html">git</a> </p>
+</footer><!-- /.post-info -->      <h1>Quelle utilité ?</h1>
+<p>Lors de l'écriture d'un document en l'occurence d'un code, il arrive à un moment où le code compile correctement et que nous voulons en rester là. Cependant, nous avons toujours envie de l'améliorer mais rajouter des fonctions casse parfois le code, il ne marche plus. C'est dans ce but qu'existe les branches dans le suivi Git.
+Il s'agit à un moment de faire une empreinte, de laisser cette empreinte vierge de toute modification pour travailler sur la deuxième branche et la faire évoluer sans faire évoluer la première.</p>
+<h1>Créer une branche</h1>
+<div class="highlight"><pre>git branch nom
+</pre></div>
+
+
+<h1>Naviguer entre les branches</h1>
+<div class="highlight"><pre>git checkout nom
+</pre></div>
+
+
+<h1>Informations complémentaires</h1>
+<ul>
+<li>le nom de la première branche est master</li>
+<li>pour savoir sur quelle branche nous nous trouvons <code>git branch</code>.</li>
+<li>avant de changer de branche, il faut valider les modifications en effectuant un commit sinon la changement de branche ne se fera pas.</li>
+</ul>
+<h1>Fusionner deux branches</h1>
+<p>La fusion entre 2 branches s'effectue facilement avec la commande <em>git merge nom-branche</em></p>
+<p>Tout d'abord, se placer dans la branche finale habituellement master :</p>
+<div class="highlight"><pre>git checkout master
+</pre></div>
+
+
+<p>puis de fusionner avec l'autre branche <strong>test</strong> :</p>
+<div class="highlight"><pre>git merge test
+</pre></div>
+
+
+<p>Si il y a des conflits dans un fichier, corriger puis faire un commit</p>
+<h1>Supprimer une branche</h1>
+<div class="highlight"><pre>git branch -d nomdelabranche
+</pre></div>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>blogroll</h2>
+                        <ul>
+                            <li><a href="http://www.arduino.cc">Arduino</a></li>
+                            <li><a href="http://www.raspberrypi.org/">Raspberry Pi</a></li>
+                            <li><a href="http://www.framboise314.fr/">Framboise314</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

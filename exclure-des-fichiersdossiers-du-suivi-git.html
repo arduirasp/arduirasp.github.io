@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
         <meta charset="utf-8" />
-        <title>Arduino et Raspberry - git</title>
+        <title>Exclure des fichiers/dossiers du suivi Git</title>
         <link rel="stylesheet" href="/theme/css/main.css" />
 
         <!--[if IE]>
@@ -16,14 +16,19 @@
                 <nav><ul>
                     <li><a href="/pages/a-propos.html">A propos</a></li>
                     <li><a href="/category/arduino.html">Arduino</a></li>
-                    <li><a href="/category/gnulinux.html">GNU/Linux</a></li>
+                    <li class="active"><a href="/category/gnulinux.html">GNU/Linux</a></li>
                     <li><a href="/category/raspberry.html">Raspberry</a></li>
                 </ul></nav>
         </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/exclure-des-fichiersdossiers-du-suivi-git.html" rel="bookmark"
+           title="Permalink to Exclure des fichiers/dossiers du suivi Git">Exclure des fichiers/dossiers du suivi Git</a></h1>
+    </header>
 
-            <aside id="featured" class="body">
-                <article>
-                    <h1 class="entry-title"><a href="/exclure-des-fichiersdossiers-du-suivi-git.html">Exclure des fichiers/dossiers du suivi Git</a></h1>
+    <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2016-02-15T14:20:00+01:00">
                 Published: lun. 15 février 2016
@@ -34,7 +39,7 @@
         </address>
 <p>In <a href="/category/gnulinux.html">GNU/Linux</a>.</p>
 <p>tags: <a href="/tag/git.html">git</a> </p>
-</footer><!-- /.post-info --><h1>A quoi sert ce fichier ?</h1>
+</footer><!-- /.post-info -->      <h1>A quoi sert ce fichier ?</h1>
 <p>Gitignore est un fichier caché avec le point devant qui définit les règles de suivi du dépôt Git. Lorsque des fichiers ou dossiers notamment temporaires ne sont pas nécessaires dans le suivi, ils sont spécifiés dans ce fichier <em>gitignore</em>.</p>
 <p>Ce fichier est à placer à la racine du dépôt.</p>
 <h1>Exclure/inclure un fichier/dossier dans le suivi</h1>
@@ -46,58 +51,11 @@ todo.txt</p>
 *.txt</p>
 <h2>Réinclure un fichier à la suite de l'exclusion d'ensemble précédente</h2>
 <p>Ecrire dans le ficher .gitignore :<br />
-!foo.html</p>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
+!foo.html</p>
+    </div><!-- /.entry-content -->
 
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/b-a-ba-de-git.html" rel="bookmark"
-                           title="Permalink to B-A BA de git">B-A BA de git</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2016-02-14T15:20:00+01:00">
-                Published: dim. 14 février 2016
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/dominique.html">Dominique</a>
-        </address>
-<p>In <a href="/category/gnulinux.html">GNU/Linux</a>.</p>
-<p>tags: <a href="/tag/git.html">git</a> </p>
-</footer><!-- /.post-info -->                <p>Comment utiliser git simplement : prise en main</p>
-                <a class="readmore" href="/b-a-ba-de-git.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/mise-en-place-dun-serveur-git.html" rel="bookmark"
-                           title="Permalink to Mise en place d'un serveur git">Mise en place d'un serveur git</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2016-01-01T12:20:00+01:00">
-                Published: ven. 01 janvier 2016
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/dominique.html">Dominique</a>
-        </address>
-<p>In <a href="/category/raspberry.html">Raspberry</a>.</p>
-<p>tags: <a href="/tag/installation.html">installation</a> <a href="/tag/git.html">git</a> </p>
-</footer><!-- /.post-info -->                <p>Mettre en place un serveur git perso sur un Rpi</p>
-                <a class="readmore" href="/mise-en-place-dun-serveur-git.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-                </ol><!-- /#posts-list -->
-                </section><!-- /#content -->
+  </article>
+</section>
         <section id="extras" class="body">
                 <div class="blogroll">
                         <h2>blogroll</h2>
